@@ -9,7 +9,7 @@ Hands-on projects built while learning Claude Code.
 
 | Project | Description |
 |---------|-------------|
-| [calude-code-in-action/uigen](calude-code-in-action/uigen/) | AI-powered UI component generator — describe React components in a chat and get a live preview, built with Next.js 15 and Claude |
+| [claude-code-in-action/uigen](claude-code-in-action/uigen/) | AI-powered UI component generator — describe React components in a chat and get a live preview, built with Next.js 15 and Claude |
 
 ## About
 
