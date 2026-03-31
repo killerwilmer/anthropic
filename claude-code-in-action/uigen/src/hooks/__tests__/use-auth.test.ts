@@ -55,21 +55,24 @@ describe("useAuth", () => {
 
   describe("signIn", () => {
     test("sets isLoading to true during sign in and false after", async () => {
-      vi.mocked(signInAction).mockResolvedValue({ success: true });
+      let resolveSignIn!: (v: any) => void;
+      const pendingSignIn = new Promise<any>((res) => { resolveSignIn = res; });
+      vi.mocked(signInAction).mockReturnValue(pendingSignIn);
+      vi.mocked(getProjects).mockResolvedValue([{ id: "p1" }] as any);
 
       const { result } = renderHook(() => useAuth());
 
-      let loadingDuringCall = false;
-      vi.mocked(signInAction).mockImplementation(async () => {
-        loadingDuringCall = result.current.isLoading;
-        return { success: true };
-      });
+      let pending: Promise<any>;
+      act(() => { pending = result.current.signIn("test@example.com", "password123"); });
+
+      // signIn is in-flight — isLoading must be true
+      expect(result.current.isLoading).toBe(true);
 
       await act(async () => {
-        await result.current.signIn("test@example.com", "password123");
+        resolveSignIn({ success: true });
+        await pending;
       });
 
-      expect(loadingDuringCall).toBe(true);
       expect(result.current.isLoading).toBe(false);
     });
 
@@ -128,21 +131,24 @@ describe("useAuth", () => {
 
   describe("signUp", () => {
     test("sets isLoading to true during sign up and false after", async () => {
-      vi.mocked(signUpAction).mockResolvedValue({ success: true });
+      let resolveSignUp!: (v: any) => void;
+      const pendingSignUp = new Promise<any>((res) => { resolveSignUp = res; });
+      vi.mocked(signUpAction).mockReturnValue(pendingSignUp);
+      vi.mocked(getProjects).mockResolvedValue([{ id: "p1" }] as any);
 
       const { result } = renderHook(() => useAuth());
 
-      let loadingDuringCall = false;
-      vi.mocked(signUpAction).mockImplementation(async () => {
-        loadingDuringCall = result.current.isLoading;
-        return { success: true };
-      });
+      let pending: Promise<any>;
+      act(() => { pending = result.current.signUp("new@example.com", "password123"); });
+
+      // signUp is in-flight — isLoading must be true
+      expect(result.current.isLoading).toBe(true);
 
       await act(async () => {
-        await result.current.signUp("new@example.com", "password123");
+        resolveSignUp({ success: true });
+        await pending;
       });
 
-      expect(loadingDuringCall).toBe(true);
       expect(result.current.isLoading).toBe(false);
     });
 
