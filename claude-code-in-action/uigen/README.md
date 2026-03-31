@@ -69,3 +69,31 @@ Open [http://localhost:3000](http://localhost:3000)
 ## Controlling context
 
 By using escape, double-tap escape, /compact, and /clear strategically, you can keep Claude focused and productive throughout your development workflow.
+
+## Custom commands
+
+Find the .claude folder in your project directory
+Create a new directory called commands inside it
+Create a new markdown file with your desired command name (like  write_tests.md)
+
+For example, a write_tests.md command might contain:
+
+Write comprehensive tests for: $ARGUMENTS
+
+Testing conventions:
+* Use Vitests with React Testing Library
+* Place test files in a __tests__ directory in the same folder as the source file
+* Name test files as [filename].test.ts(x)
+* Use @/ prefix for imports
+
+Coverage:
+* Test happy paths
+* Test edge cases
+* Test error states
+
+restart claude code to pick up the new command:
+
+You can then run this command with a file path:
+
+/write_tests the use-auth.ts file in the hooks directory
+
