@@ -97,3 +97,19 @@ You can then run this command with a file path:
 
 /write_tests the use-auth.ts file in the hooks directory
 
+## MCP servers with Claude Code
+
+claude mcp add playwright npx @playwright/mcp@latest
+
+allow permissions with
+
+.claude/settings.local.json
+
+{
+    "permissions": {
+        "allow": ["mcp__playwright"],
+        "deny": []
+    }
+}
+
+Navigate to localhost:3000, generate a basic component, review the styling, and update the generation prompt at @src/lib/prompts/generation.tsx to produce better components going forward.
