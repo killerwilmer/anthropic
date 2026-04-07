@@ -113,3 +113,11 @@ allow permissions with
 }
 
 Navigate to localhost:3000, generate a basic component, review the styling, and update the generation prompt at @src/lib/prompts/generation.tsx to produce better components going forward.
+
+## Github integration
+
+1. Install (gh) -> brew install gh
+2. Authenticate gh auth login -> gh auth login
+3. Run cluade on the console and run /install-github-app
+4. Create PR and pull that changes to your local branch
+

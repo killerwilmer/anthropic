@@ -52,3 +52,6 @@ next-env.d.ts
 
 # claude personal overrides
 .claude/settings.local.json
+
+# playwright mcp artifacts
+.playwright-mcp/
