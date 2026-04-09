@@ -121,3 +121,13 @@ Navigate to localhost:3000, generate a basic component, review the styling, and 
 3. Run cluade on the console and run /install-github-app
 4. Create PR and pull that changes to your local branch
 
+## Introducing hooks
+
+PreToolUse hooks - Run before a tool is called
+PostToolUse hooks - Run after a tool is called
+
+Global - ~/.claude/settings.json (affects all projects)
+Project - .claude/settings.json (shared with team)
+Project (not committed) - .claude/settings.local.json (personal settings)
+
+
