@@ -5,6 +5,9 @@ import path from "path";
 
 const REVIEW_DIR = "src/queries";
 
+// look at inside the ./queries directory and see if 
+// any of the proposed changes are duplicating existing query functions.
+// If so, block the change and provide feedback on which existing functions could be reused instead.
 async function main() {
   process.exit(0);
   // Read JSON input from stdin
@@ -58,6 +61,7 @@ Please research and analyze the existing queries in the ./queries directory and:
 If yes, provide specific feedback on which existing functions could be used instead. Be concise and specific.
 If no, just say "Changes look appropriate."`;
 
+  // Run a copy of Claude
   const messages = [];
   for await (const message of query({
     prompt,

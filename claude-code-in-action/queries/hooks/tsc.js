@@ -69,6 +69,8 @@ function runTypeCheck(configPath) {
   return null; // Type check passed
 }
 
+// Run a type check on all .ts and .tsx files in the project, 
+// using the project's tsconfig.json, and tsc --noEmit if there are any errors.
 async function main() {
   const input = await readInput();
   const file = input.tool_response?.filePath || input.tool_input?.file_path;
