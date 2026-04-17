@@ -131,3 +131,7 @@ Project - .claude/settings.json (shared with team)
 Project (not committed) - .claude/settings.local.json (personal settings)
 
 
+## The Claude Code SDK
+It has read permissions by default
+
+inside queries run -> npm run sdk
